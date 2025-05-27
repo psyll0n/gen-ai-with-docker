@@ -30,6 +30,7 @@ func main() {
 	ctx := context.Background()
 
 	// -------------------------------------------------
+	// CHUNKING...
 	// Make chunks from files
 	// -------------------------------------------------
 	contents, _ := GetContentFiles("/docs", ".md")
@@ -38,6 +39,7 @@ func main() {
 		chunks = append(chunks, ChunkText(content, 512, 210)...)
 	}
 
+	// EMBEDDINGS...
 	// -------------------------------------------------
 	// Generate embeddings from chunks
 	// -------------------------------------------------
@@ -83,9 +85,11 @@ func main() {
 	// User question about 🍍🥓 Hawaiian pizza
 	// -------------------------------------------------
 
+	// USER QUESTION:
 	userQuestion := "Is Hawaiian pizza really from Hawaii?"
 	//userQuestion := "Give me regional variations of Hawaiian pizza?"
 
+	// SYSTEM INSTRUCTIONS:
 	systemInstructions := `
 	You are a Hawaiian pizza expert. Your name is Bob.
 	Provide accurate, enthusiastic information about Hawaiian pizza, 
@@ -99,7 +103,7 @@ func main() {
 	// -------------------------------------------------
 	// Generate embeddings from user question
 	// -------------------------------------------------
-
+	// EMBEDDINGS...
 	fmt.Println("⏳ Creating embeddings from user question...")
 
 	embeddingsFromUserQuestion, err := client.Embeddings.New(ctx, openai.EmbeddingNewParams{
@@ -123,6 +127,7 @@ func main() {
 
 	buffer := floatsToBytes(embedding)
 
+	// SIMILARITY SEARCH:
 	// Search for similar documents in Redis
 	fmt.Println("⏳ Searching for similar documents in Redis...")
 	results, err := rdb.FTSearchWithArgs(ctx,
@@ -147,7 +152,7 @@ func main() {
 	fmt.Println("🎉 Found", len(results.Docs), "similarities")
 
 	knowledgeBase := ""
-
+	// CONTEXT: create context from the similarities
 	for _, doc := range results.Docs {
 		fmt.Println("📝 ID:", doc.ID, "Distance:", doc.Fields["vector_distance"])
 		fmt.Println("📝 Content:\n", doc.Fields["content"])
@@ -165,18 +170,21 @@ func main() {
 	fmt.Println("⏳ Asking the question to the LLM...")
 	fmt.Println("--------------------------------------")
 
+	// PROMPT:
 	messages := []openai.ChatCompletionMessageParamUnion{
 		openai.SystemMessage(systemInstructions),
 		openai.SystemMessage(knowledgeBase),
 		openai.UserMessage(userQuestion),
 	}
 
+	// PARAMETERS:
 	param := openai.ChatCompletionNewParams{
 		Messages:    messages,
 		Model:       chatModel,
 		Temperature: openai.Opt(0.5),
 	}
 
+	// COMPLETION:
 	stream := client.Chat.Completions.NewStreaming(ctx, param)
 
 	for stream.Next() {

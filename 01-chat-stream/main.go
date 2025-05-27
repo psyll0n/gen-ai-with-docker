@@ -23,6 +23,7 @@ func main() {
 
 	ctx := context.Background()
 
+	// SYSTEM INSTRUCTIONS:
 	systemInstructions := `
 	You are a Hawaiian pizza expert. Your name is Bob.
 	Provide accurate, enthusiastic information about Hawaiian pizza's history 
@@ -35,6 +36,7 @@ func main() {
 	USE ONLY THE INFORMATION PROVIDED IN THE KNOWLEDGE BASE.	
 	`
 
+	// CONTEXT:
 	knowledgeBase := `
 	## Traditional Ingredients
 	- Base: Traditional pizza dough
@@ -50,9 +52,9 @@ func main() {
 	- Germany: "Hawaii-Toast" is a related open-faced sandwich with ham, pineapple, and cheese
 	- Sweden: "Flying Jacob" pizza includes banana, pineapple, curry powder, and chicken
 	`
-
-	userQuestion := "What is your name?"
-	//userQuestion := "What is the best pizza in the world?"
+	// USER QUESTION:
+	//userQuestion := "What is your name?"
+	userQuestion := "What is the best pizza in the world?"
 	// userQuestion := "What are the ingredients of the hawaiian pizza?"
 
 	messages := []openai.ChatCompletionMessageParamUnion{

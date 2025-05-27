@@ -2,7 +2,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Idea intellij light theme",
     "editor.fontSize": 15,
-    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.fontSize": 20,
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "editor.detectIndentation": true,
@@ -10,6 +10,7 @@
     "files.autoSaveDelay": 1000,
     "workbench.tree.indent": 20,
     "window.zoomLevel": 0.0,
+    "editor.hover.enabled": false,
     "[markdown]": {
         "editor.unicodeHighlight.ambiguousCharacters": false,
         "editor.unicodeHighlight.invisibleCharacters": false,
@@ -43,5 +44,136 @@
     },
     "[go]": {
         "editor.fontSize": 18,
-    }
+    },
+        "todohighlight.keywords": [
+       {
+            "text": "NOTE:",
+            "color": "#ffffff",
+            "backgroundColor": "#0062FF",
+            "border": "1px solid #0062FF",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "QUESTION:",
+            "color": "#000000",
+            "backgroundColor": "#F6FF00",
+            "border": "1px solid #F6FF00",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "USER QUESTION:",
+            "color": "#ffffff",
+            "backgroundColor": "#08C051",
+            "border": "1px solid #08C051",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "SYSTEM INSTRUCTIONS:",
+            "color": "#ffffff",
+            "backgroundColor": "#7D08C0",
+            "border": "1px solid #7D08C0",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },        
+        {
+            "text": "CONTEXT:",
+            "color": "#ffffff",
+            "backgroundColor": "#0827C0",
+            "border": "1px solid #0827C0",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },    
+        {
+            "text": "DEBUG:",
+            "color": "#ffffff",
+            "backgroundColor": "#ff0000",
+            "border": "1px solid #ff0000",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "TODO:",
+            "color": "#ffffff",
+            "backgroundColor": "#149C11",
+            "border": "1px solid #149C11",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "IMPORTANT!",
+            "color": "#ffffff",
+            "backgroundColor": "#EC1818",
+            "border": "1px solid #EC1818",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "CHUNKING...",
+            "color": "#000000",
+            "backgroundColor": "#ECAC18",
+            "border": "1px solid #ECAC18",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "EMBEDDINGS...",
+            "color": "#FFFFFF",
+            "backgroundColor": "#6218EC",
+            "border": "1px solid #6218EC",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },
+        {
+            "text": "SIMILARITY SEARCH:",
+            "color": "#ffffff",
+            "backgroundColor": "#077730",
+            "border": "1px solid #077730",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },    
+        {
+            "text": "PROMPT:",
+            "color": "#000000",
+            "backgroundColor": "#15E260",
+            "border": "1px solid #15E260",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },   
+        {
+            "text": "PARAMETERS:",
+            "color": "#000000",
+            "backgroundColor": "#E0E30B",
+            "border": "1px solid #E0E30B",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },   
+        {
+            "text": "COMPLETION:",
+            "color": "#FFFFFF",
+            "backgroundColor": "#E2159A",
+            "border": "1px solid #E2159A",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },   
+        {
+            "text": "TOOLS:",
+            "color": "#000000",
+            "backgroundColor": "#15DFE2",
+            "border": "1px solid #15DFE2",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },   
+        {
+            "text": "TOOL CALLS:",
+            "color": "#FFFFFF",
+            "backgroundColor": "#9315E2",
+            "border": "1px solid #9315E2",
+            "borderRadius": "3px",
+            "isWholeLine": false
+        },   
+    ]    
+
 }

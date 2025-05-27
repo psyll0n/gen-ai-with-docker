@@ -24,6 +24,7 @@ func main() {
 
 	ctx := context.Background()
 
+	// TOOLS:
 	pizzeriaAddresses := openai.ChatCompletionToolParam{
 		Function: openai.FunctionDefinitionParam{
 			Name:        "pizzeria_addresses",
@@ -64,12 +65,14 @@ func main() {
 		sayHelloTool,
 	}
 
+	// USER QUESTION:
 	userQuestion := openai.UserMessage(`
 		Give me some pizzeria addresses in Lyon, France.
 		Say Hello to Bob Morane.
 		Give me some pizzeria addresses in Tokyo, Japan.
 	`)
 
+	// PARAMETERS:
 	params := openai.ChatCompletionNewParams{
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			userQuestion,
@@ -81,11 +84,13 @@ func main() {
 	}
 
 	// Make completion request
+	// COMPLETION:
 	completion, err := client.Chat.Completions.New(ctx, params)
 	if err != nil {
 		panic(err)
 	}
 
+	// TOOL CALLS:
 	toolCalls := completion.Choices[0].Message.ToolCalls
 
 	// Return early if there are no tool calls
